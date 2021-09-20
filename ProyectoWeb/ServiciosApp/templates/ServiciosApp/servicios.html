@@ -3,20 +3,37 @@
 <!-- Heading -->
 <section class="page-section clearfix">
    <div class="container">
-      <h1 class="text-white text-center">Servicios</h1>
+      <h1 class="text-white text-center mb-5">Servicios</h1>
 
-      {% for servicio in servicios %}
-         <h2 class="text-white">{{ servicio.titulo }}</h2>
-         <p class="text-white">{{ servicio.contenido }}</p>
-         <p>
-            <img 
-               src="{{ servicio.imagen.url }}" 
-               alt="{{ servicio.titulo }}" 
-               class="rounded-circle"
-               style="width: 100px; height: 100px;"
-            >
-         </p>
-      {% endfor %}
+      <div class="row">
+
+         {% for servicio in servicios %}
+
+            <div class="col-6">
+               <div class="card m-4" style="width: 500px;">
+                  <div class="row no-gutters">
+                      <div class="col-sm-5">
+                        <img 
+                           src="{{ servicio.imagen.url }}" 
+                           alt="{{ servicio.titulo }}" 
+                           class="card-img p-4"
+                           style="max-width: 200px; max-height: 200px;"
+                        >
+                      </div>
+                      <div class="col-sm-7">
+                          <div class="card-body">
+                              <h3 class="card-title font-weight-bold">{{ servicio.titulo }}</h3>
+                              <p class="card-text">{{ servicio.contenido }}</p>
+                              <a href="#" class="btn btn-primary">Inscribirme</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            
+         {% endfor %}
+
+      </div>
 
    </div>
 </section>

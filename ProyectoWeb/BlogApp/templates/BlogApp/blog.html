@@ -45,12 +45,10 @@
 <section>
    <div class="mb-4" style="width: 95%; margin: auto; text-align: center; color: white;">
 
-      <p>Categorías:</p>
-
       {% for categoria in categorias %}
 
-         <span class="badge badge-light">
-            {{ categoria.nombre }}
+         <span class="badge badge">
+            <a class="text-light text-uppercase" href="{% url 'categoria' categoria.id %}">{{ categoria.nombre }}</a>
          </span>
 
       {% endfor %}

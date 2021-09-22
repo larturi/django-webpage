@@ -8,7 +8,8 @@ def blog(request):
 
 def categoria(request, categoria_id):
     categoria = Categoria.objects.get(id=categoria_id)  
+    categorias = Categoria.objects.all()  
     posts = Post.objects.filter(categorias=categoria)  
 
-    return render(request, "BlogApp/categoria.html", {'posts': posts, 'categoria': categoria})
+    return render(request, "BlogApp/categoria.html", {'posts': posts, 'categorias': categorias})
 

@@ -1,13 +1,30 @@
 {% extends "ProyectoWebApp/base.html" %} {% load static %} {% block content %}
 
+{% load crispy_forms_tags %}
+
+
 <!-- Heading -->
 <section class="page-section clearfix">
    <div class="container">
       <h1 class="text-white text-center">Contacto</h1>
 
-      <p>
-         {{ formulario_contacto }}
-      </p>
+      <div class="containerForm">
+
+         <form action="" method="POST">
+
+            {% csrf_token %}
+
+            <table style="color: white;">
+               {{ formulario_contacto | crispy  }}
+            </table> 
+
+            <input type="submit" value="Enviar" class="btn btn-secondary float-right mb-4">
+
+            <br>
+
+         </form>
+
+      </div>
    </div>
 </section>
 

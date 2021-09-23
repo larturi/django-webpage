@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 
 from .forms import FormContacto
 
+from django.core.mail import EmailMessage
+
+import traceback
+
 def contacto(request):
 
     formulario_contacto = FormContacto()
@@ -16,6 +20,20 @@ def contacto(request):
             email = request.POST.get('email')
             mensaje = request.POST.get('mensaje')
 
-            return redirect("/contacto/?valid")
+            emailSend = EmailMessage(
+                "Mensaje desde App de Django", "El usuario con nombre {} y correo {} escribe lo siguiente:\n\n {}".format(nombre, email, mensaje), 
+                "", 
+                ["lea.arturi.drive@gmail.com"],
+                reply_to=[email])
+
+            try:
+                emailSend.send()
+                return redirect("/contacto/?valid")
+
+            except Exception as e:
+                trace_back = traceback.format_exc()
+                message = str(e)+ " " + str(trace_back)
+                print (message)
+                return redirect("/contacto/?novalid")
 
     return render(request, "ContactoApp/contacto.html", {'formulario_contacto': formulario_contacto})

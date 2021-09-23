@@ -10,22 +10,37 @@
 
       <div class="containerForm">
 
-         <form action="" method="POST">
 
-            {% csrf_token %}
+         {% if "valid" in request.GET %}
 
-            <table style="color: white;">
-               {{ formulario_contacto | crispy  }}
-            </table> 
+            <div class="row">
+               <div class="col text-center p-3">
+                  Información enviada correctamente. Gracias!
+               </div>
+            </div>
 
-            <input type="submit" value="Enviar" class="btn btn-secondary float-right mb-4">
+         {% else %} 
 
-            <br>
+            <form action="" method="POST">
 
-         </form>
+               {% csrf_token %}
+
+               <table style="color: white;">
+                  {{ formulario_contacto | crispy  }}
+               </table> 
+
+               <input type="submit" value="Enviar" class="btn btn-secondary float-right mb-4">
+
+               <br>
+
+            </form>
+
+         {% endif %}
 
       </div>
+
    </div>
 </section>
+
 
 {% endblock %}

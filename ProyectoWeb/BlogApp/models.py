@@ -8,8 +8,8 @@ class Categoria(models.Model):
     updated = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = 'categoria'
-        verbose_name_plural = 'categorias'
+        verbose_name = 'categoriaPost'
+        verbose_name_plural = 'categoriasPosts'
 
     def __str__(self):
         return self.nombre

@@ -48,6 +48,11 @@
                <li class="nav-item {% if request.path|slice:':6' == '/blog/' %} active {% endif %} px-lg-4">
                   <a class="nav-link text-uppercase text-expanded" href="{% url 'blog' %}">Blog</a>
                </li>
+               {% if importe_total_carrito > 0 %}
+                  <li class="nav-item {% if request.path == '/carrito/show/' %} active {% endif %} px-lg-4">
+                     <a class="nav-link text-uppercase text-expanded" href="/carrito/show">Carrito</a>
+                  </li>
+               {% endif %}
             </ul>
          </div>
       </div>

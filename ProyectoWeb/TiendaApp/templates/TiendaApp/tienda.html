@@ -9,8 +9,11 @@
       <div class="row">
 
          <div class="col-12">
-            <p class="text-white text-center">Total: ${{ importe_total_carrito }}</p>
-            {% include "carrito/widget.html" %}
+            {% if importe_total_carrito > 0 %}
+               <p class="text-white text-center">
+                  <a href="/carrito/show">Ir al Carrito</a>
+               </p>
+            {% endif %}
          </div>
 
          {% for producto in productos %}

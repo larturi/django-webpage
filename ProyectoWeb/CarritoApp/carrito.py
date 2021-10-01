@@ -6,11 +6,12 @@ class Carrito:
         carrito = self.session.get('carrito')
 
         if not carrito:
-            carrito = self.session['carrito'] = {}
+            self.carrito = self.session['carrito'] = {}
         else:
             self.carrito = carrito
 
     def agregarProducto(self, producto):
+
         if str(producto.id) not in self.carrito.keys():
             self.carrito[producto.id] = {
                 "id_producto": producto.id,
@@ -25,13 +26,13 @@ class Carrito:
                     value["cantidad"] = value["cantidad"] + 1
                     break
 
-        self.guardarCarrito()
+        self.guardar()
 
     def eliminarProducto(self, producto):
         producto.id = str(producto.id)
         if producto.id in self.carrito:
             del self.carrito[producto.id]
-            self.guardarCarrito()
+            self.guardar()
 
     def restarCantidadProducto(self, producto):
         for key, value in self.carro.items():
@@ -39,7 +40,7 @@ class Carrito:
                 if int(value["cantidad"]) > 0:
                     value["cantidad"] = value["cantidad"] - 1
                     break
-        self.guardarCarrito()
+        self.guardar()
 
     def vaciarCarrito(self):
         self.session['carrito'] = {}

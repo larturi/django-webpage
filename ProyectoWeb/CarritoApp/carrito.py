@@ -24,6 +24,7 @@ class Carrito:
             for key, value in self.carrito.items():
                 if key == str(producto.id):
                     value["cantidad"] = value["cantidad"] + 1
+                    value["precio"] = float(value["precio"]) + producto.precio
                     break
 
         self.guardar()
@@ -35,10 +36,14 @@ class Carrito:
             self.guardar()
 
     def restarCantidadProducto(self, producto):
-        for key, value in self.carro.items():
+        for key, value in self.carrito.items():
             if key == str(producto.id):
-                if int(value["cantidad"]) > 0:
+                if int(value["cantidad"]) > 1:
                     value["cantidad"] = value["cantidad"] - 1
+                    value["precio"] = float(value["precio"]) - producto.precio
+                    break
+                else:
+                    self.eliminarProducto(producto)    
                     break
         self.guardar()
 

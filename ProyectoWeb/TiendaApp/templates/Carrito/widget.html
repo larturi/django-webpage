@@ -5,7 +5,8 @@
             <tr>
                 <th>Producto</th>
                 <th>Cantidad</th>
-                <th>Suma</th>
+                <th>Precio</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -14,6 +15,7 @@
                     <tr>
                         <td scope="row">{{ value.nombre }}</td>
                         <td>{{ value.cantidad }}</td>
+                        <td>${{ value.precio }}</td>
 
                         <td>
                             <a href="{% url 'carrito:agregar' value.id_producto %}" class="btn btn-sm btn-success">+</a>
